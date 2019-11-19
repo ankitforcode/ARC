@@ -5,7 +5,7 @@ import numpy as np
 filename = '25ff71a9.json'
 
 
-def process_data(*args):
+def solve(*args):
     output_data = []
     for training_data in data['train']:
         input_grid = to_numpy_array(training_data['input'])
