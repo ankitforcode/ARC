@@ -1,27 +1,22 @@
-from utils import *
-import numpy as np
+from utils import ProcessData, to_output_array, \
+    roll_np_array, output_to_json
 
 
-filename = '25ff71a9.json'
-
-
-def solve(*args):
-    output_data = []
-    for training_data in data['train']:
-        input_grid = to_numpy_array(training_data['input'])
-        test_grid = to_numpy_array(training_data['output'])
-        output_grid = to_output_array(input_grid)
-        n_rows, _ = np.shape(output_grid)
-        output_grid[0, :] = input_grid[n_rows-1, :]
-        for i in range(n_rows-1):
-            output_grid[i+1, :] = input_grid[i, :]
-        if np.array_equal(output_grid, test_grid):
-            output_data.append(output_grid.tolist())
-    return output_data
+def solve(input_grid):
+    """
+    Here we have solve function that takes the input grid
+    and produces the output grid based on the below logic.
+    """
+    _output_grid = roll_np_array(input_grid, 1)
+    return output_to_json(_output_grid)
 
 
 # This is main handler for the proram
 if __name__ == "__main__":
-    data = load_json(filename)
-    output_grid = process_data(data)
-    print(output_grid)
+    pd = ProcessData(__file__)
+    for idx in range(len(pd.input_grid)):
+        output = solve(pd.input_grid[idx])
+        print(output + '\n')
+    for idx in range(len(pd.eval_grid)):
+        output = solve(pd.eval_grid[idx])
+        print(output)

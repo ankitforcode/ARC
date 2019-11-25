@@ -96,3 +96,11 @@ def output_to_json(arr):
     array to json object and returns back.
     """
     return json.dumps({'output': arr.tolist()})
+
+
+def roll_np_array(arr, shift, axis=0):
+    """
+    This function rolls the numpy array based
+    on shift value and axis provided.
+    """
+    return np.roll(arr, shift, axis=axis)
