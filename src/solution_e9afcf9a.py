@@ -24,4 +24,4 @@ if __name__ == "__main__":
         print(output + '\n')
     for idx in range(len(pd.eval_grid)):
         output = solve(pd.eval_grid[idx])
-        print(output)
+        print(output + '\n')
