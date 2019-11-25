@@ -1,12 +1,13 @@
-#Import libraries
+# Import libraries
 import json
 import os
 import re
 import numpy as np
 
+
 class ProcessData():
 
-    #init method or constructor
+    # init method or constructor
     def __init__(self, file):
         """
         These are set of initial variables that are 
@@ -16,10 +17,11 @@ class ProcessData():
         self.filename = ""
         self.data = None
         self.input_grid = []
-        self.test_grid = []
+        self.eval_grid = []
         self._get_json_file()
         self._load_json()
-        self._get_grids_from_json()
+        self._get_train_grid_from_json()
+        self._get_eval_grid_from_json()
 
     def _get_json_file(self):
         """
@@ -52,6 +54,7 @@ class ProcessData():
         for d in self.data['test']:
             self.eval_grid.append(np.array(d['input']))
 
+
 def get_unique_items(array):
     """
     This function gets the unique items
@@ -59,6 +62,7 @@ def get_unique_items(array):
     """
     unique_items = np.unique(array)
     return unique_items
+
 
 def to_output_array(array):
     """
@@ -68,6 +72,7 @@ def to_output_array(array):
     cloned_array = np.copy(array)
     return cloned_array
 
+
 def get_shape_of_array(array):
     """
     This function returns the shape of the
@@ -76,12 +81,14 @@ def get_shape_of_array(array):
     n_row, n_column = np.shape(array)
     return n_row, n_column
 
+
 def compare_np_array(arr1, arr2):
     """
     This function compares the two numpy array
     and returns the bool response.
     """
     return np.array_equal(arr1, arr2)
+
 
 def output_to_json(arr):
     """
