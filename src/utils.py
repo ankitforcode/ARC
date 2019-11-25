@@ -1,6 +1,22 @@
 import json
+import os
+import re
 import numpy as np
 
+class ProcessData():
+    def __init__(self, file):
+        """
+        These are set of initial variables that are 
+        created when this class is initialized.
+        """
+        self.file = file
+        self.filename = ""
+        self.data = None
+        self.input_grid = []
+        self.test_grid = []
+        self._get_json_file()
+        self._load_json()
+        self._get_grids_from_json()
 
 def load_json(filename):
     """
