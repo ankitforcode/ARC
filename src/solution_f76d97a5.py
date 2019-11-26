@@ -1,3 +1,4 @@
+import sys
 from utils import ProcessData, to_output_array, \
     get_shape_of_array, get_unique_items, output_to_json
 
@@ -22,7 +23,7 @@ def solve(input_grid):
 
 # This is main handler for the proram
 if __name__ == "__main__":
-    pd = ProcessData(__file__)
+    pd = ProcessData(sys.argv[1])
     for idx in range(len(pd.input_grid)):
         output = solve(pd.input_grid[idx])
         print(output + '\n')
