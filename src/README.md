@@ -44,6 +44,47 @@ The main handler takes the input file as system argument and then passes the fil
 
 These functions are private to the class and are called as soon as class is created. This same approach is used across all the solutions since we want to avoid repeatable approach and use as much code as possible in common ways. 
 
+```bash
+class ProcessData():
+
+    # init method or constructor
+    def __init__(self, filename):
+        """
+        These are set of initial variables that are 
+        created when this class is initialized.
+        """
+        self.filename = filename
+        self.data = None
+        self.input_grid = []
+        self.eval_grid = []
+        self._load_json()
+        self._get_train_grid_from_json()
+        self._get_eval_grid_from_json()
+
+    def _load_json(self):
+        """
+        This function takes the filename as input and 
+        laods the json in to the object for further
+        processing.
+        """
+        with open(self.filename) as json_file:
+            self.data = json.load(json_file)
+
+    def _get_train_grid_from_json(self):
+        """
+        This function reads the input data from the train
+        block and also reads the output data so that we 
+        can test against our generated output.
+        """
+        for d in self.data['train']:
+            self.input_grid.append(np.array(d['input']))
+
+    def _get_eval_grid_from_json(self):
+        for d in self.data['test']:
+            self.eval_grid.append(np.array(d['input']))
+```
+
+
 1. The first approach to the solution involves shifting the numpy array on axis=1. This approach makes use of the internal numpy library `np.roll` which makes it lot easier to get the desired output.
 
 ```bash
