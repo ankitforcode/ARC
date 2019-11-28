@@ -1,6 +1,6 @@
 # Hand Coded Solution for the Abstraction and Reasoning Corpus (ARC)
 
-This part of the repository contains the implementation of Abstraction and Reasoning Corpus solution using python. This was created as per requirement for Assignment 3 for Programming and Tools in Artificial Intelligence Module. Here we provide the code that provides the solution for the three input files given as 3 tasks in the ARC. 
+This part of the repository contains the implementation of *Abstraction and Reasoning Corpus* solution using `python`. This was created as per requirement for `Assignment 3` for *Programming and Tools in Artificial Intelligence* Module. Here we provide the code that provides the solution for the three input files given as 3 tasks in the ARC. 
 
 The 3 tasks that are solved in this are:
 
@@ -84,8 +84,9 @@ class ProcessData():
             self.eval_grid.append(np.array(d['input']))
 ```
 
+### Solution 1
 
-1. The first approach to the solution involves shifting the numpy array on axis=1. This approach makes use of the internal numpy library `np.roll` which makes it lot easier to get the desired output.
+The solution to `25ff71a9.json` involves shifting the numpy array on axis=1. This approach makes use of the internal numpy library `np.roll` which makes it lot easier to get the desired output.
 
 ```bash
 def roll_np_array(arr, shift, axis=0):
@@ -96,3 +97,46 @@ def roll_np_array(arr, shift, axis=0):
     return np.roll(arr, shift, axis=axis)
 ```
 
+### Solution 2
+
+The solution to `e9afcf9a.json` involves copying the input grid to output grid for processing. There after we iterate through all the columns and at every even steps we move the cells around to swap the digits in the rows for that column. 
+
+The final grid is the desired output that is produced.
+
+```bash
+def solve(input_grid):
+    """
+    Here we have solve function that takes the input grid
+    and produces the output grid based on the below logic.
+    """
+    _output_grid = to_output_array(input_grid)
+    _, n_cols = get_shape_of_array(input_grid)
+    for i in range(n_cols):
+        if (i % 2):
+            _output_grid[0, i] = input_grid[1, i]
+            _output_grid[1, i] = input_grid[0, i]
+    return output_to_json(_output_grid)
+```
+
+### Solution 3
+
+The solution to `f76d97a5.json` involves copying the input grid to output grid for processing. There after we flip the array based on the color patters that the original array holds and then change all 5's to 0's for getting the final output that is desired.
+
+```bash
+def solve(input_grid):
+    """
+    Here we have solve function that takes the input grid
+    and produces the output grid based on the below logic.
+    """
+    _output_grid = to_output_array(input_grid)
+    n_rows, n_cols = get_shape_of_array(input_grid)
+    unique_items = get_unique_items(input_grid)
+    for i in range(n_rows):
+        for j in range(n_cols):
+            if input_grid[i, j] == unique_items[0]:
+                _output_grid[i, j] = unique_items[1]
+            else:
+                _output_grid[i, j] = unique_items[0]
+            _output_grid[_output_grid == 5] = 0
+    return output_to_json(_output_grid)
+```
