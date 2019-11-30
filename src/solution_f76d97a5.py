@@ -5,8 +5,10 @@ from utils import ProcessData, to_output_array, \
 
 def solve(input_grid):
     """
-    Here we have solve function that takes the input grid
-    and produces the output grid based on the below logic.
+    Here we have solve function that takes the input grid. 
+    we flip the array based on the color patterns that the 
+    original array holds and then change all 5's to 0's 
+    for getting the final output that is desired
     """
     _output_grid = to_output_array(input_grid)
     n_rows, n_cols = get_shape_of_array(input_grid)

@@ -5,8 +5,10 @@ from utils import ProcessData, to_output_array, \
 
 def solve(input_grid):
     """
-    Here we have solve function that takes the input grid
-    and produces the output grid based on the below logic.
+    Here we have solve function that takes the input grid,
+    Use numpy.roll function created in utils.py to
+    rolls the numpy array based on shift value and axis=1 provided
+    to give the desired output.
     """
     _output_grid = roll_np_array(input_grid, 1)
     return output_to_json(_output_grid)
