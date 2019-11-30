@@ -20,7 +20,6 @@ Following libraries are used to code the solution and get the desired output.
 Each solution involves the json file to be provided as input for the execution and desired output is achieved. Following is the example execution to get the desired output.
 
 ```bash
-$ python3 solution_25ff71a9.py ./25ff71a9.json 
 {"output": [[0, 0, 0], [1, 1, 1], [0, 0, 0]]}
 
 {"output": [[0, 0, 0], [0, 0, 0], [1, 1, 1]]}
@@ -35,6 +34,13 @@ $ python3 solution_25ff71a9.py ./25ff71a9.json
 ```
 
 ## Code Execution
+
+Use the following command line to execute the code
+```bash
+$ python3 solution_25ff71a9.py ./25ff71a9.json 
+$ python3 solution_e9afcf9a.py ./e9afcf9a.json 
+$ python3 solution_f76d97a5.py ./f76d97a5.json
+```
 
 The main handler takes the input file as system argument and then passes the filename to the `ProcessData` class which initializes the variables and execute some basic functions for the solution to be processed further in file `utils.py`. 
 
