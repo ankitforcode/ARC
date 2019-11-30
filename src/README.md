@@ -6,7 +6,7 @@ The 3 tasks that are solved in this are:
 
 * 25ff71a9.json
 * e9afcf9a.json
-* sf76d97a5.json
+* f76d97a5.json
 
 ## Solution Approach
 
@@ -17,7 +17,7 @@ Following libraries are used to code the solution and get the desired output.
 * json
 * numpy
 
-Each solution involves the json file to be provided as input for the execution and desired output is acheived. Following is the example execution to get the desired output.
+Each solution involves the json file to be provided as input for the execution and desired output is achieved. Following is the example execution to get the desired output.
 
 ```bash
 $ python3 solution_25ff71a9.py ./25ff71a9.json 
