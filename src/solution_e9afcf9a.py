@@ -5,8 +5,9 @@ from utils import ProcessData, to_output_array, \
 
 def solve(input_grid):
     """
-    Here we have solve function that takes the input grid
-    and produces the output grid based on the below logic.
+    Here we have solve function that takes the input grid.
+    Every even steps we move the cells around to swap the 
+    digits on the currently processed grid
     """
     _output_grid = to_output_array(input_grid)
     _, n_cols = get_shape_of_array(input_grid)
