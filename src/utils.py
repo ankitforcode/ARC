@@ -15,11 +15,11 @@ class ProcessData():
         self.data = None
         self.input_grid = []
         self.eval_grid = []
-        self._load_json()
-        self._get_train_grid_from_json()
-        self._get_eval_grid_from_json()
+        self.__load_json()
+        self.__get_train_grid_from_json()
+        self.__get_eval_grid_from_json()
 
-    def _load_json(self):
+    def __load_json(self):
         """
         This function takes the filename as input and 
         laods the json in to the object for further
@@ -28,7 +28,7 @@ class ProcessData():
         with open(self.filename) as json_file:
             self.data = json.load(json_file)
 
-    def _get_train_grid_from_json(self):
+    def __get_train_grid_from_json(self):
         """
         This function reads the input data from the train
         block and also reads the output data so that we 
@@ -37,7 +37,7 @@ class ProcessData():
         for d in self.data['train']:
             self.input_grid.append(np.array(d['input']))
 
-    def _get_eval_grid_from_json(self):
+    def __get_eval_grid_from_json(self):
         for d in self.data['test']:
             self.eval_grid.append(np.array(d['input']))
 
